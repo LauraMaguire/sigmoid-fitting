@@ -1,3 +1,6 @@
+%% Laura used this script to make the plots in Sophie's honors thesis
+%  4/06/16
+
 experiment = zeros(1,100);
 for j =1:6
 for i=1:100

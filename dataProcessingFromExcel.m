@@ -1,3 +1,7 @@
+%% FG124 AGGREGATION CURVE FITTING
+% This script fits the results of an FG124 aggregation timecourse to a
+% sigmoid and plots the fit parameters.  It takes as input a csv file
+% containing all the excel data, already processed into an array.
 
 % Full file path of csv file
 csv = 'C:\Users\Laura\Google Drive\Team FRET Protocols\Data\FG124 aggregation timecourses\160525_timeCourse\160525_LKM_FG124TimeCourse.csv';
