@@ -78,5 +78,41 @@ for c=1:5
     ANOVAmatrixL(1:length(col),c) = col;
 end
 
-%%
-[p,tbl,stats] = anova1(ANOVAmatrixK);
+[p5,tbl,stat] = anova1(ANOVAmatrixK);
+[p6,tbl2,stats2] = anova1(ANOVAmatrixL);
+
+%% run an ANOVA for PEG conditions
+pANOVAmatrixK = NaN(50,5);
+
+for c=1:5
+    col = nonzeros(datapeg(c,k,:,:));
+    pANOVAmatrixK(1:length(col),c) = col;
+end
+
+pANOVAmatrixL = NaN(50,5);
+
+for c=1:5
+    col = nonzeros(datapeg(c,lg,:,:));
+    pANOVAmatrixL(1:length(col),c) = col;
+end
+
+[p3,tbl,stat] = anova1(pANOVAmatrixK);
+[p4,tbl2,stats2] = anova1(pANOVAmatrixL);
+
+%% run an ANOVA for PVP conditions
+vANOVAmatrixK = NaN(50,5);
+
+for c=1:5
+    col = nonzeros(datapvp(c,k,:,:));
+    vANOVAmatrixK(1:length(col),c) = col;
+end
+
+vANOVAmatrixL = NaN(50,5);
+
+for c=1:5
+    col = nonzeros(datapvp(c,lg,:,:));
+    vANOVAmatrixL(1:length(col),c) = col;
+end
+
+[p,tbl,stat] = anova1(vANOVAmatrixK);
+[p2,tbl2,stats2] = anova1(vANOVAmatrixL);
