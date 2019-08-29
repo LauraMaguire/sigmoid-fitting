@@ -4,11 +4,13 @@
 % file produced by the plate reader.
 
 % Full file path the the folder where all timecourses are stored
-basename = 'C:\Users\Laura\Google Drive\Hough Lab\Nuclear Pore Team\Data\FG124 aggregation timecourses\';
+%basename = 'C:\Users\Laura\Google Drive\Hough Lab\Nuclear Pore Team\Data\FG124 aggregation timecourses\';
+basename = '/Users/lauramaguire/Google Drive/Hough Lab/Nuclear Pore Team/Data/FG124 aggregation timecourses/';
+% Date in 'yymmdd' format
 % Date in 'yymmdd' format
 date = '170126';
 % Import the data
-num = xlsread([basename date '\' date '_TimeCourse.xlsx']);
+num = xlsread([basename date '/' date '_TimeCourse.xlsx']);
 
 %% Shape the data into an array
 % D1 = # rows on the plate (always 8)
@@ -16,7 +18,8 @@ num = xlsread([basename date '\' date '_TimeCourse.xlsx']);
 % D3 = # time points taken (calculated automatically from plate reader save
 %      format)
 timePoints = (size(num,1) - 20)/12;
-rawData = zeros(8,12,timePoints);
+%rawData = zeros(8,12,timePoints);
+rawData = zeros(8,12,100);
 for t=1:100
     rawData(:,:,t) = num(12*t+13:12*t+20,:);
 end
@@ -85,8 +88,8 @@ C = nan(size(data,1),size(data,2));
 GOF = nan(size(data,1),size(data,2),5);
 %% Fit all replicates and display the fit
 close all
-for i=3%:size(data,1) % number of conditions
-    for j=2%1:reps(i) % number of reps
+for i=1:size(data,1) % number of conditions
+    for j=1:reps(i) % number of reps
         %norm = squeeze(data(i,j,:))/mean(blanks(i,:));
         norm = squeeze(data(i,j,1:end))./smooth(blanks(i,1:end));
         [fitresult, gof] = sigmoidFit(time(1:end), norm.');

@@ -21,17 +21,14 @@ function [fitresult, gof] = sigmoidFit(time, rep)
 
 % Set up fittype and options.
 % ft = fittype( '1+A/(1+exp(-k*(t-T)))', 'independent', 't', 'dependent','y' );
-ft = fittype( 'C+A/(1+exp(-k*(t-T)))', 'independent', 't', 'dependent', 'y' );
+ft = fittype( 'C+A/(1+exp(-(t-T0)/tau))', 'independent', 't', 'dependent', 'y' );
 opts = fitoptions( 'Method', 'NonlinearLeastSquares' );
 opts.Display = 'Off';
 % opts.Lower = [0 0 0];
 % opts.StartPoint = [0.171186687811562 0.27692298496089 0.0318328463774207];
-% opts.Lower = [-1 0 0 0]; %prior to 08-15-19
-% opts.Upper = [Inf 10 Inf Inf];
-% opts.StartPoint = [1 10 1 1];
-opts.Lower = [-1 0 0 0];
-opts.Upper = [Inf 10 Inf Inf];
-opts.StartPoint = [10 1 1 1]; %A C T k
+opts.Lower = [0 -Inf -Inf 0]; % A C T0 tau
+opts.Upper = [Inf Inf Inf Inf];
+opts.StartPoint = [100 1 10 0.1];
 
 % Fit model to data.
 [fitresult, gof] = fit( xData, yData, ft, opts );

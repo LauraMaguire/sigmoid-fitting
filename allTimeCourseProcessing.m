@@ -25,6 +25,13 @@ f28 = load('C:\Users\bit\Desktop\sophie\time course fits\170228\170228_workspace
 m07 = load('C:\Users\bit\Desktop\sophie\time course fits\170307\170307_workspace_final.mat');
 
 %%
+j27 = load('C:\Users\bit\Desktop\sophie\time course fits\170127\170127_workspacefinal.mat');
+f19 = load('C:\Users\bit\Desktop\sophie\time course fits\170219\170219_workspace_final.mat');
+f21 = load('C:\Users\bit\Desktop\sophie\time course fits\170221\170221_workspace_final.mat');
+f28 = load('C:\Users\bit\Desktop\sophie\time course fits\170228\170228_workspace_final.mat');
+m07 = load('C:\Users\bit\Desktop\sophie\time course fits\170307\170307_workspace_final.mat');
+
+%%
 
 allAmp = zeros(5,5);
 
